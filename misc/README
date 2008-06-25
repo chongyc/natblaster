@@ -1,0 +1,5 @@
+This directory contains some useful things to help when reading the code.
+
+c.vim - a VIM syntax file that makes things highlight a little nicer.  Helps
+        in code readibility.  To use it, place it in ~/.vim/after/syntax/
+		This file is not perfect, but works well enough.

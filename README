@@ -1,0 +1,68 @@
+NATBLASTER Quick Overview
+
+The released Natblaster code is a proof-of-concept implementation of the
+techniques developed and outlined in the paper:
+
+NATBLASTER: Establishing TCP Connections Between Hosts Behinds NATS
+
+to appear in the 2005 ACM SIGCOMM Asia Workshop.
+
+This code is released without warranty.  It is a proof-of-concept
+implementation.  If the natblaster approach for peer connectivity through
+NATS/firewalls is used we highly recommend using your own implementation or
+doing a code-review to ensure this implementation meets your standards.  This
+code is released under the Apache 2 License, as specified at the top of each
+source file.
+
+libnet and libpcap are required to compile to peer code, they are not need if
+the 3rd party helper code is compiled alone.  The compilation process produces
+two shared objects, natblaster_peer.so and natblaster_helper.so.  These share
+objects can be linked against to import natblaster peer and 3rd party
+support, respectively.  The compilation process produces example peer and 3rd
+party programs named peer and helper, respectively.
+
+To compile everything use "make all".  Use "make help" for more options.  The
+makefile dependencies aren't perfect, make sure to use "make clean".
+
+Use "make html" to produce the Doxygen documentation (Doxygen required).
+
+Use "make print" to produce a singe postscript file with all the code
+(enscript required).
+
+The directory structure is arranged as follows:
+
+o / 
+	+ Contains the Makefile
+	+ Contains this README
+	+ Contains a Python script that helps start the built peer application.
+	  This script is not needed to run the peer.
+	+ Various files resulting from the build process are placed in this
+	  directory
+
+o doc/
+	+ Contains the doxygen configuration file (doxygen.cfg)
+	+ Contains the doxygen main page file (readme.dox)
+	+ Doxygen warnings are placed in this directory (as doxygen.warn)
+	+ Doxygen output is placed in this directory (as various self-documenting
+	  sub-directories)
+
+o misc/
+	+ Contains a Vim syntax file that helps bring the Natblaster code to life.
+	  See the README file in the same directory for more information.
+
+o ps/
+	+ The "make print" output is placed in this directory
+
+o src/
+	+ Contains all the code.  Built object files are placed alongside the c
+	  files in the sub-directories.
+	+ helper/
+		- Contains code only used by the 3rd party
+	+ peer/
+		- Contains code only used by the peer
+	+ share/
+		- Contains code used by both the helper and the peer
+	+ stubs/
+		- Contains simple sample helper and peer applications.
+
+
